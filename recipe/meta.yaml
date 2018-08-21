@@ -1,5 +1,4 @@
-{% set version = '0.9-69' %}
-
+{% set version = '0.9-69-3' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,20 +9,23 @@ package:
 source:
   fn: RVAideMemoire_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/RVAideMemoire_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/RVAideMemoire/RVAideMemoire_{{ version }}.tar.gz
-  sha256: 9f4886c5fdae0f05930750ad662c152d7ea49973e8472df7549f357ff7a68bb9
+    - {{ cran_mirror }}/src/contrib/RVAideMemoire_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/RVAideMemoire/RVAideMemoire_{{ version }}.tar.gz
+  sha256: 41ce38ae568a618d7ec6c0182fad02d35092d943d9d7bb07988859096070a4a2
 
 build:
+  merge_build_host: True  # [win]
   number: 0
-  # r-mixomics not available on Win64/OSX due to r-rgl and r-igraph.
-  skip: true  # [win or osx]
+  # r-mixomics not available on OSX due to r-rgl.
+  skip: true  # [win32 or osx]
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-factominer
     - r-mass
@@ -39,7 +41,6 @@ requirements:
     - r-pls
     - r-pspearman
     - r-vegan >=2.4_3
-
   run:
     - r-base
     - r-factominer
@@ -59,7 +60,7 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('RVAideMemoire')"  # [not win]
+    - $R -e "library('RVAideMemoire')"           # [not win]
     - "\"%R%\" -e \"library('RVAideMemoire')\""  # [win]
 
 about:
@@ -67,7 +68,7 @@ about:
   license: GPL-2
   summary: Contains miscellaneous functions useful in biostatistics, mostly univariate and multivariate
     testing procedures with a special emphasis on permutation tests. Many functions
-    intend to simplify the user's life by shortening existing procedures or by implementing
+    intend to simplify user's life by shortening existing procedures or by implementing
     plotting functions that can be used with as many methods from different packages
     as possible.
   license_family: GPL2
