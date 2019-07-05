@@ -1,4 +1,4 @@
-{% set version = '0.9-69-3' %}
+{% set version = '0.9-73' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,17 +7,15 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: RVAideMemoire_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/RVAideMemoire_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/RVAideMemoire/RVAideMemoire_{{ version }}.tar.gz
-  sha256: 41ce38ae568a618d7ec6c0182fad02d35092d943d9d7bb07988859096070a4a2
+  sha256: 0f86c757385dc000ba1761097e2621bdd8a73ddafd0f6beaecf67ec61ade5bfe
 
 build:
   merge_build_host: True  # [win]
   number: 0
-  # r-mixomics not available on OSX due to r-rgl.
-  skip: true  # [win32 or osx]
+  noarch: generic
   rpaths:
     - lib/R/lib/
     - lib/
@@ -33,10 +31,8 @@ requirements:
     - r-boot
     - r-car
     - r-cramer
-    - r-dunn.test
     - r-lme4 >=1.0_4
-    - r-mixomics >=5.0.2
-    - r-multcompview
+    - r-mixomics
     - r-nnet
     - r-pls
     - r-pspearman
@@ -49,10 +45,8 @@ requirements:
     - r-boot
     - r-car
     - r-cramer
-    - r-dunn.test
     - r-lme4 >=1.0_4
-    - r-mixomics >=5.0.2
-    - r-multcompview
+    - r-mixomics
     - r-nnet
     - r-pls
     - r-pspearman
@@ -72,13 +66,26 @@ about:
     plotting functions that can be used with as many methods from different packages
     as possible.
   license_family: GPL2
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-2'  # [win]
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
+    - conda-forge/r
+
+# Encoding: latin1
+# Package: RVAideMemoire
+# Type: Package
+# Title: Testing and Plotting Procedures for Biostatistics
+# Version: 0.9-73
+# Date: 2019-03-26
+# Author: Maxime Herve
+# Maintainer: Maxime Herve <maxime.herve@univ-rennes1.fr>
+# Imports: ade4 (>= 1.7-8), boot, car, cramer, FactoMineR, graphics, grDevices, lme4 (>= 1.0-4), MASS, mixOmics, nnet, pls, pspearman, stats, utils, vegan (>= 2.4-3)
+# Suggests: dgof, emmeans, ordinal, survival
+# Description: Contains miscellaneous functions useful in biostatistics, mostly univariate and multivariate testing procedures with a special emphasis on permutation tests. Many functions intend to simplify user's life by shortening existing procedures or by implementing plotting functions that can be used with as many methods from different packages as possible.
+# License: GPL-2
+# LazyLoad: yes
+# NeedsCompilation: no
+# Packaged: 2019-03-26 08:08:18 UTC; maherve
+# Repository: CRAN
+# Date/Publication: 2019-03-26 09:06:10 UTC
