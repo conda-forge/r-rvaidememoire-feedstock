@@ -1,4 +1,4 @@
-{% set version = "0.9-75" %}
+{% set version = "0.9-77" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/RVAideMemoire_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/RVAideMemoire/RVAideMemoire_{{ version }}.tar.gz
-  sha256: 374c2cc2af27089990cd33f8b9bd5b20cb7c83d7c3afad4e0c60307a3ced8f93
+  sha256: c0f10a788a24460dd7592e1700c8ab7b9a1b243b479e344a57818acc9ac39c47
 
 build:
   merge_build_host: true  # [win]
@@ -22,7 +22,7 @@ build:
 
 requirements:
   build:
-    - {{posix}}zip               # [win]
+    - {{ posix }}zip               # [win]
   host:
     - r-base
     - r-factominer
@@ -60,8 +60,7 @@ test:
 about:
   home: https://CRAN.R-project.org/package=RVAideMemoire
   license: GPL-2
-  summary: Contains miscellaneous functions useful in biostatistics, mostly univariate and multivariate testing procedures with a special emphasis on permutation
-    tests. Many functions intend to simplify user's life by shortening existing procedures or by implementing plotting functions that can be used with as many methods
+  summary: Contains miscellaneous functions useful in biostatistics, mostly univariate and multivariate testing procedures with a special emphasis on permutation tests. Many functions intend to simplify user's life by shortening existing procedures or by implementing plotting functions that can be used with as many methods
     from different packages as possible.
   license_family: GPL2
   license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
