@@ -59,11 +59,12 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=RVAideMemoire
-  license: GPL-2
+  license: GPL-2.0-only
   summary: Contains miscellaneous functions useful in biostatistics, mostly univariate and multivariate testing procedures with a special emphasis on permutation tests. Many functions intend to simplify user's life by shortening existing procedures or by implementing plotting functions that can be used with as many methods
     from different packages as possible.
   license_family: GPL2
-  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
 extra:
   recipe-maintainers:
