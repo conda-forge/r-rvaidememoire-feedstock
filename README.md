@@ -5,11 +5,9 @@ Home: https://CRAN.R-project.org/package=RVAideMemoire
 
 Package license: GPL-2.0-only
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rvaidememoire-feedstock/blob/master/LICENSE.txt)
 
 Summary: Contains miscellaneous functions useful in biostatistics, mostly univariate and multivariate testing procedures with a special emphasis on permutation tests. Many functions intend to simplify user's life by shortening existing procedures or by implementing plotting functions that can be used with as many methods from different packages as possible.
-
-
 
 Current build status
 ====================
