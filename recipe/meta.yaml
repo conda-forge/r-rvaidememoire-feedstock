@@ -1,4 +1,4 @@
-{% set version = "0.9-83-2" %}
+{% set version = "0.9-83-3" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/RVAideMemoire_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/RVAideMemoire/RVAideMemoire_{{ version }}.tar.gz
-  sha256: 11c33aec62c6e1dbd59a6e54e9d01a39b24d6fc97fcd708fee3d7a455e945d54
+  sha256: 37fe58bec65286a57c03587befa83c8ff4f085a96fbd522c35b4248a9f90aeca
 
 build:
   merge_build_host: true  # [win]
