@@ -1,4 +1,4 @@
-{% set version = "0.9-83-7" %}
+{% set version = "0.9-83-11" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/RVAideMemoire_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/RVAideMemoire/RVAideMemoire_{{ version }}.tar.gz
-  sha256: c5eea44fbc62389977c45c806617291f1951e46b3fc35fdf768e07486ad8a6c7
+  sha256: 0d283ba55008a116a3ed850b5f21c2a0becc10f559ba0a8282fe72af078d7c8c
 
 build:
-  number: 1
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
